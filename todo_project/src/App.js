@@ -1,13 +1,16 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App({message, children}) {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {message}
+        </p>
+        <p>
+          {children}
         </p>
         <a
           className="App-link"
