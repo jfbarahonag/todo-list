@@ -1,11 +1,7 @@
 import React from "react";
 import './TodoItem.css'
     
-function TodoItem({ completed, text }) {
-  
-  const onToggleComplete = () => {
-    console.log("Task completed ? ", completed)
-  }
+function TodoItem({ completed, text, onToggleComplete }) {
   
   const onDelete = () => {
     console.log("Task deleted")

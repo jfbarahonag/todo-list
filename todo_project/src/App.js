@@ -28,6 +28,14 @@ function App() {
     todo.text.toLowerCase().includes(searchValue.toLowerCase())
   ))
 
+  const toggleCompleteTODO = text => {
+    const TODOIdx = TODOs.findIndex(todo => todo.text === text)
+
+    const newTODOs = [...TODOs]
+    newTODOs[TODOIdx].completed = !newTODOs[TODOIdx].completed;
+    setTODOs(newTODOs)
+  }
+
   return (
     <div className="app-wrapper">
 
@@ -36,7 +44,7 @@ function App() {
         setSearchValue = {setSearchValue}
       />
       <TodoCounter
-        total={totalTODOs. length}
+        total={totalTODOs.length}
         completed={completedTODOs.length}
       />
       <TodoList>
@@ -45,7 +53,8 @@ function App() {
             <TodoItem
               key={todo.text}
               text={todo.text}
-              completed={todo.completed}  
+              completed={todo.completed}
+              onToggleComplete={() => {toggleCompleteTODO(todo.text)}}
             />
           ))
         }
