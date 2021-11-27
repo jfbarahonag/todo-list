@@ -2,36 +2,29 @@ import React from 'react'
 
 import './TodoSearch.css'
 
-function TodoSearch() {
+function TodoSearch({ searchValue, setSearchValue }) {
 
-  const [searchValue, setSearchValue] = React.useState('')
+  const handleEnter = (e) => {
+    const searchBar = document.getElementById("search-bar");
+    if (searchBar) {
+      searchBar.className = "search-bar__visible";
+    }
+  };
 
+  const handleLeave = (e) => {
+    const searchBar = document.getElementById("search-bar");
+    if (searchBar) {
+      searchBar.className = "search-bar__hidden";
+    }
+  };
 
-  const handleEnter = e => {
-      const searchBar = document.getElementById("search-bar");
-      if (searchBar)
-      {
-          searchBar.className = 'search-bar__visible'   
-      }
-  }
-    
-  const handleLeave = e => {
-      const searchBar = document.getElementById("search-bar");
-      if (searchBar)
-      {
-        searchBar.className = 'search-bar__hidden'
-      }
-  }
-  
-  const onSearchInputChange = e => {
-    setSearchValue(e.target.value)
-  }
+  const onSearchInputChange = (e) => {
+    setSearchValue(e.target.value);
+    console.log(searchValue)
+  };
 
-  return [
-    <section
-      className="search-container"
-      onMouseLeave={handleLeave}
-    >
+  return (
+    <section className="search-container" onMouseLeave={handleLeave}>
       <input
         className="search-bar__hidden"
         id="search-bar"
@@ -51,7 +44,7 @@ function TodoSearch() {
         />
       </svg>
     </section>
-  ];
+  );
 }
 
 export  { TodoSearch }
