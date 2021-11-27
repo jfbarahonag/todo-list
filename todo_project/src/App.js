@@ -21,8 +21,12 @@ function App() {
   //TODO: change to an empty array
   const [TODOs, setTODOs] = useState(defaultTODOs)
 
-  const completedTODOs = TODOs.filter(todo => !!todo.completed).length
-  const totalTODOs = TODOs.length
+  const completedTODOs = TODOs.filter(todo => !!todo.completed)
+  const totalTODOs = TODOs
+
+  const filterTODOs = TODOs.filter(todo => (
+    todo.text.toLowerCase().includes(searchValue.toLowerCase())
+  ))
 
   return (
     <div className="app-wrapper">
@@ -32,12 +36,12 @@ function App() {
         setSearchValue = {setSearchValue}
       />
       <TodoCounter
-        total={totalTODOs}
-        completed={completedTODOs}
+        total={totalTODOs. length}
+        completed={completedTODOs.length}
       />
       <TodoList>
         {
-          TODOs.map( todo => (
+          filterTODOs.map( todo => (
             <TodoItem
               key={todo.text}
               text={todo.text}
