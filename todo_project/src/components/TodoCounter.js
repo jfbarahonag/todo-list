@@ -4,7 +4,7 @@ import './TodoCounter.css'
 function TodoCounter() {
     return (
         <span className='todo-counter'>
-            You have completed 2 of 3 tasks
+            You have completed n of m tasks
         </span>
     )
 }

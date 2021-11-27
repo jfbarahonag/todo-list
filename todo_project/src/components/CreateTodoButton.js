@@ -2,6 +2,11 @@ import React from 'react'
 import './CreateTodoButton.css'
 
 function CreateTodoButton(props) {
+
+  const handleChange = e => {
+      console.log(e.target.value);
+    }
+
     return (
       <section className="create-task">
         <h2 className="create-task__title">Add a new Task</h2>
@@ -9,6 +14,7 @@ function CreateTodoButton(props) {
           className="create-task__input"
           type="text"
           placeholder="Task name here..."
+          onChange={handleChange}
         />
 
         <button className="create-task__button">
