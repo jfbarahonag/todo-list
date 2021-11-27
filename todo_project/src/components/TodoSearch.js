@@ -7,7 +7,6 @@ function TodoSearch() {
     
     const handleEnter = e => {
         const searchBar = document.getElementById("search-bar");
-        
         if (searchBar)
         {
             searchBar.className = 'search-bar__visible'   
@@ -16,22 +15,28 @@ function TodoSearch() {
     
     const handleLeave = e => {
         const searchBar = document.getElementById("search-bar");
-        
         if (searchBar)
         {
-            searchBar.className = 'search-bar__hidden'
+          searchBar.className = 'search-bar__hidden'
         }
-    }
+  }
+  
+  const onSearchInputChange = e => {
+    console.log(e.target.value)
+  }
 
     return (
-        <section
-            className="search-container"
-            onMouseLeave={handleLeave}>
-            <input
-                className="search-bar__hidden"
-                id="search-bar"
-                type="text"
-                placeholder="Search..." />
+      <section
+        className="search-container"
+        onMouseLeave={handleLeave}
+      >
+        <input
+          className="search-bar__hidden"
+          id="search-bar"
+          type="text"
+          placeholder="Search..."
+          onChange={onSearchInputChange}
+        />
         <svg
           style={{ width: "24px", height: "24px", cursor: "pointer" }}
           viewBox="0 0 24 24"
