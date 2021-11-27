@@ -1,11 +1,7 @@
 import React from "react";
 import './TodoItem.css'
     
-function TodoItem({ completed, text, onToggleComplete }) {
-  
-  const onDelete = () => {
-    console.log("Task deleted")
-  }
+function TodoItem({ completed, text, onToggleComplete, onDelete }) {
 
   return (
     <li className="todo-item__card">

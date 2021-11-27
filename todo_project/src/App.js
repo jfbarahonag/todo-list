@@ -36,6 +36,14 @@ function App() {
     setTODOs(newTODOs)
   }
 
+  const deleteTODO = text => {
+    const TODOIdx = TODOs.findIndex(todo => todo.text === text)
+
+    const newTODOs = [...TODOs]
+    newTODOs.splice(TODOIdx, 1)
+    setTODOs(newTODOs)
+  }
+
   return (
     <div className="app-wrapper">
 
@@ -54,7 +62,8 @@ function App() {
               key={todo.text}
               text={todo.text}
               completed={todo.completed}
-              onToggleComplete={() => {toggleCompleteTODO(todo.text)}}
+              onToggleComplete={() => { toggleCompleteTODO(todo.text) }}
+              onDelete={() => { deleteTODO(todo.text) }}
             />
           ))
         }
