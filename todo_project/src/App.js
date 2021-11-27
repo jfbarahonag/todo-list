@@ -13,7 +13,8 @@ const defaultTODOs = [
   { text: 'Study Vue', completed: true },
   { text: 'Panic Button [FW]', completed: true },
   { text: 'Vipe\'s web app', completed: false },
-]
+  { text: 'Procrastinate', completed: true },
+];
 
 function App() {
   const [searchValue, setSearchValue] = useState('')
