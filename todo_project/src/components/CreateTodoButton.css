@@ -11,22 +11,29 @@
 }
 
 .create-task__input {
-    grid-column-start: 2;
-    grid-column-end  : 5;
+    grid-column-start: 3;
+    grid-column-end  : 7;
     padding: 1rem;
     border-radius: 10px;
     border: 1px solid black;
     outline: none;
+    margin-bottom: 20px;
 }
 
 .create-task__button {
-    grid-column-start: 6;
-    grid-column-end  : 8;
+    grid-row-start: 4;
+    grid-column-start: 4;
+    grid-column-end  : 6;
     background: none;
-    border: 0.5px solid rgb(107, 107, 107);
+    border: none;
+}
+
+.create-task__button > svg {
+    border-radius: 50%;
+    padding: 10px;
     cursor: pointer;
-    background-color: rgb(200, 200, 200);
-    padding: 1rem;
+    background-color: rgb(85, 201, 255);
+    color: aliceblue;
 }
 
 @media (max-width: 600px) {
@@ -51,5 +58,12 @@
         grid-column-start: 2;
         grid-column-end  : 8;
         border-radius: 10px;
+    }
+
+    .create-task__button>svg {
+        position: fixed;
+        right   : 0;
+        bottom  : 0;
+        margin: 1rem;
     }
 }

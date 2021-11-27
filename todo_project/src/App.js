@@ -13,6 +13,11 @@ const TODOs = [
   { text: 'Study Vue', completed: true },
   { text: 'Panic Button [FW]', completed: true },
   { text: 'Vipe\'s web app', completed: false },
+  { text: 'Vipe\'s web app', completed: false },
+  { text: 'Vipe\'s web app', completed: false },
+  { text: 'Vipe\'s web app', completed: false },
+  { text: 'Vipe\'s web app', completed: false },
+  { text: 'Vipe\'s web app', completed: false },
 ]
 
 function App() {
