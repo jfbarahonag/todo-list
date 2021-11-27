@@ -1,0 +1,18 @@
+#search-bar {
+    transition: visibility 1s;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem;
+}
+
+.search-bar__hidden {
+    visibility: hidden;
+}
+
+.search-bar__visible {
+    visibility: visible;
+}

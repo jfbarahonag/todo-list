@@ -1,9 +1,8 @@
 function TodoItem({text}) {
     return (
         <li>
-            <span>C</span>
-            <p>{text}</p>
-            <span>X</span>
+            <input type="checkbox" />
+            <span>{text}</span>
         </li>
     )
 }

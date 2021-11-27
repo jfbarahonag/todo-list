@@ -1,9 +1,11 @@
 import React from "react";
 
+import './TodoList.css'
+
 function TodoList({children}) {
     return (
-        <section>
-            <ul>
+        <section className="todo-list">
+            <ul className="todo-list__container">
                 {children}
             </ul>
         </section>

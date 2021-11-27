@@ -1,10 +1,12 @@
-// import './App.css';
 import React from 'react';
+//components
 import { TodoCounter } from './components/TodoCounter'
 import { TodoSearch } from './components/TodoSearch'
 import { TodoList } from './components/TodoList'
 import { TodoItem } from './components/TodoItem'
 import { CreateTodoButton } from "./components/CreateTodoButton";
+//styles
+import './App.css';
 
 const TODOs = [
   { text: 'Study React', completed: false },
@@ -15,9 +17,10 @@ const TODOs = [
 
 function App() {
   return (
-    <React.Fragment> {/*invisible tag*/}
-      <TodoCounter />
+    <div className="app-wrapper">
+
       <TodoSearch />
+      <TodoCounter />
       <TodoList>
         {
           TODOs.map( todo => (
@@ -28,7 +31,7 @@ function App() {
         }
       </TodoList>
       <CreateTodoButton />
-    </React.Fragment>
+    </div>
   );
 }
 

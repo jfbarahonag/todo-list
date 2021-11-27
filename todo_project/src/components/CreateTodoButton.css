@@ -1,0 +1,55 @@
+.create-task {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(8, 1fr);
+}
+
+.create-task__title {
+    grid-column-start: 1;
+    grid-column-end: 9;
+    text-align: center;
+}
+
+.create-task__input {
+    grid-column-start: 2;
+    grid-column-end  : 5;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    outline: none;
+}
+
+.create-task__button {
+    grid-column-start: 6;
+    grid-column-end  : 8;
+    background: none;
+    border: 0.5px solid rgb(107, 107, 107);
+    cursor: pointer;
+    background-color: rgb(200, 200, 200);
+    padding: 1rem;
+}
+
+@media (max-width: 600px) {
+    .create-task {
+        display              : grid;
+        grid-template-rows   : 1fr 1fr 1fr;
+    }
+
+    .create-task__title {
+    grid-column-start: 2;
+    grid-column-end  : 8;
+    text-align       : center;
+    }
+
+    .create-task__input {
+        grid-column-start: 2;
+        grid-column-end  : 8;
+        margin-bottom: 10px;
+    }
+
+    .create-task__button {
+        grid-column-start: 2;
+        grid-column-end  : 8;
+        border-radius: 10px;
+    }
+}
