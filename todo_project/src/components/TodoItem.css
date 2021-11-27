@@ -1,0 +1,26 @@
+.todo-item__card {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.todo-item__card-check {
+    color: green;
+}
+
+.todo-item__card-not-check {
+    color: red;
+}
+
+.todo-item__card-text-check {
+    text-decoration: line-through solid;
+    color: gray;
+}
+
+.todo-item__card-text-not-check {
+    text-decoration: none;
+}
+
+.todo-item__card-trash {
+    cursor: pointer;
+}

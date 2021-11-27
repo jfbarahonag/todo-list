@@ -11,7 +11,7 @@ import './App.css';
 const TODOs = [
   { text: 'Study React', completed: false },
   { text: 'Study Vue', completed: true },
-  { text: 'Panic Button [FW]', completed: false },
+  { text: 'Panic Button [FW]', completed: true },
   { text: 'Vipe\'s web app', completed: false },
 ]
 
@@ -26,7 +26,9 @@ function App() {
           TODOs.map( todo => (
             <TodoItem
               key={todo.text}
-              text={todo.text} />
+              text={todo.text}
+              completed={todo.completed}  
+            />
           ))
         }
       </TodoList>
