@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { TODOContext } from "../TodoContext";
 import { TodoCounter } from "../components/TodoCounter";
@@ -9,56 +9,41 @@ import { CreateTodoButton } from "../components/CreateTodoButton";
 
 import "./App.css";
 
-function AppUI(
-  {
-    searchValue,
-    setSearchValue,
-    totalTODOs,
-    completedTODOs,
-    filterTODOs,
-    toggleCompleteTODO,
+function AppUI() {
+  const { 
+    error, 
+    loading, 
+    filterTODOs, 
+    toggleCompleteTODO, 
     deleteTODO,
-    loading,
-    error,
-  
-    }
-) {
-    return (
+  } = useContext(TODOContext);
+
+  return (
       <div className="app-wrapper">
         <TodoSearch />
         <TodoCounter />
 
-        <TODOContext.Consumer>
-          {({
-            error,
-            loading,
-            filterTODOs,
-            toggleCompleteTODO,
-            deleteTODO,
-          }) => (
-            <TodoList>
-              {loading && <p>Loading content</p>}
-              {error && <p>ERROR loading content</p>}
-              {!loading && !filterTODOs.length && !error && (
-                <p>Add your first Task</p>
-              )}
-              {filterTODOs.map((todo) => (
-                <TodoItem
-                  key={todo.text}
-                  text={todo.text}
-                  completed={todo.completed}
-                  onToggleComplete={() => {
-                    toggleCompleteTODO(todo.text);
-                  }}
-                  onDelete={() => {
-                    deleteTODO(todo.text);
-                  }}
-                />
-              ))}
-            </TodoList>
+        <TodoList>
+          {loading && <p>Loading content</p>}
+          {error && <p>ERROR loading content</p>}
+          {!loading && !filterTODOs.length && !error && (
+            <p>Add your first Task</p>
           )}
-        </TODOContext.Consumer>
-
+          {filterTODOs.map((todo) => (
+            <TodoItem
+              key={todo.text}
+              text={todo.text}
+              completed={todo.completed}
+              onToggleComplete={() => {
+                toggleCompleteTODO(todo.text);
+              }}
+              onDelete={() => {
+                deleteTODO(todo.text);
+              }}
+            />
+          ))}
+        </TodoList>
+        
         <CreateTodoButton />
       </div>
     );

@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { TODOContext } from "../../TodoContext";
 
-import './TodoSearch.css'
+import "./TodoSearch.css";
 
-function TodoSearch({ searchValue, setSearchValue }) {
+function TodoSearch() {
+  const { searchValue, setSearchValue } = useContext(TODOContext);
 
   const handleEnter = (e) => {
     const searchBar = document.getElementById("search-bar");
@@ -46,4 +48,4 @@ function TodoSearch({ searchValue, setSearchValue }) {
   );
 }
 
-export  { TodoSearch }
+export { TodoSearch };

@@ -42,16 +42,16 @@ function TODOProvider(props) {
     };
 
     return (
-        <TODOContext.Provider value={{
-            searchValue,
-            setSearchValue,
-            totalTODOs,
-            completedTODOs,
-            filterTODOs,
-            loading,
-            error,
-            toggleCompleteTODO,
-            deleteTODO,
+      <TODOContext.Provider value={{
+        searchValue,
+        setSearchValue,
+        totalTODOs,
+        completedTODOs,
+        filterTODOs,
+        loading,
+        error,
+        toggleCompleteTODO,
+        deleteTODO,
         }}>
             {props.children}
         </TODOContext.Provider>
