@@ -6,6 +6,7 @@ import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
+import { Modal } from "../components/Modal";
 
 import "./App.css";
 
@@ -17,6 +18,8 @@ function AppUI() {
     toggleCompleteTODO,
     deleteTODO,
     totalTODOs,
+    openModal,
+    setOpenModal
   } = useContext(TODOContext);
 
   return (
@@ -47,6 +50,12 @@ function AppUI() {
           />
         ))}
       </TodoList>
+
+      {!!openModal && (
+        <Modal>
+          <h2>{filterTODOs[0]?.text}</h2>
+        </Modal>
+      )}
 
       <CreateTodoButton />
     </div>

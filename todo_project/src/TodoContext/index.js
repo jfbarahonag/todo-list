@@ -2,47 +2,48 @@ import React, { createContext, useState } from "react";
 
 import { useLocalStorage } from "./UseLocalStorage";
 
-const TODOContext = createContext()
+const TODOContext = createContext();
 
 const KEY = {
   V1: "TODOS_V1",
 };
 
 function TODOProvider(props) {
+  const {
+    items: TODOs,
+    saveItems: saveTODOs,
+    loading,
+    error,
+  } = useLocalStorage(KEY.V1, []);
 
-    const {
-      items: TODOs,
-      saveItems: saveTODOs,
-      loading,
-      error,
-    } = useLocalStorage(KEY.V1, []);
-    const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState("");
+  const [openModal, setOpenModal] = useState(false);
 
-    const completedTODOs = TODOs.filter((todo) => !!todo.completed);
-    const totalTODOs = TODOs;
+  const completedTODOs = TODOs.filter((todo) => !!todo.completed);
+  const totalTODOs = TODOs;
 
-    const filterTODOs = TODOs.filter((todo) =>
-      todo.text.toLowerCase().includes(searchValue.toLowerCase())
-    );
+  const filterTODOs = TODOs.filter((todo) =>
+    todo.text.toLowerCase().includes(searchValue.toLowerCase())
+  );
 
-    const toggleCompleteTODO = (text) => {
-      const TODOIdx = TODOs.findIndex((todo) => todo.text === text);
+  const toggleCompleteTODO = (text) => {
+    const TODOIdx = TODOs.findIndex((todo) => todo.text === text);
 
-      const newTODOs = [...TODOs];
-      newTODOs[TODOIdx].completed = !newTODOs[TODOIdx].completed;
-      saveTODOs(newTODOs);
-    };
+    const newTODOs = [...TODOs];
+    newTODOs[TODOIdx].completed = !newTODOs[TODOIdx].completed;
+    saveTODOs(newTODOs);
+  };
 
-    const deleteTODO = (text) => {
-      const TODOIdx = TODOs.findIndex((todo) => todo.text === text);
+  const deleteTODO = (text) => {
+    const TODOIdx = TODOs.findIndex((todo) => todo.text === text);
 
-      const newTODOs = [...TODOs];
-      newTODOs.splice(TODOIdx, 1);
-      saveTODOs(newTODOs);
-    };
-
-    return (
-      <TODOContext.Provider value={{
+    const newTODOs = [...TODOs];
+    newTODOs.splice(TODOIdx, 1);
+    saveTODOs(newTODOs);
+  };
+  return (
+    <TODOContext.Provider
+      value={{
         searchValue,
         setSearchValue,
         totalTODOs,
@@ -52,10 +53,13 @@ function TODOProvider(props) {
         error,
         toggleCompleteTODO,
         deleteTODO,
-        }}>
-            {props.children}
-        </TODOContext.Provider>
-    )
+        openModal,
+        setOpenModal
+      }}
+    >
+      {props.children}
+    </TODOContext.Provider>
+  );
 }
 
-export { TODOContext, TODOProvider }
+export { TODOContext, TODOProvider };
