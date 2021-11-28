@@ -6,6 +6,7 @@ import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
 import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
+import { TodoForm } from "../components/TodoForm";
 import { Modal } from "../components/Modal";
 
 import "./App.css";
@@ -53,7 +54,7 @@ function AppUI() {
 
       {!!openModal && (
         <Modal>
-          <h2>{filterTODOs[0]?.text}</h2>
+          <TodoForm />
         </Modal>
       )}
 

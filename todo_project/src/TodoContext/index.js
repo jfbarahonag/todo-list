@@ -41,6 +41,17 @@ function TODOProvider(props) {
     newTODOs.splice(TODOIdx, 1);
     saveTODOs(newTODOs);
   };
+  
+  const addTODO = (text) => {
+
+    const newTODOs = [...TODOs];
+    newTODOs.push({
+      completed: false,
+      text : text
+    })
+    saveTODOs(newTODOs);
+  };
+
   return (
     <TODOContext.Provider
       value={{
@@ -53,6 +64,7 @@ function TODOProvider(props) {
         error,
         toggleCompleteTODO,
         deleteTODO,
+        addTODO,
         openModal,
         setOpenModal
       }}
