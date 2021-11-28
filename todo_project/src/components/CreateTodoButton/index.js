@@ -1,13 +1,13 @@
 import React from "react";
 import "./CreateTodoButton.css";
 
-function CreateTodoButton({ setOpenModal, openModal }) {
+function CreateTodoButton({ setOpenModal }) {
   const handleChange = (e) => {
     console.log(e.target.value);
   };
 
   const onToggleAddTodo = () => {
-    setOpenModal(!openModal)
+    setOpenModal(prevState => !prevState)
   }
 
   return (
