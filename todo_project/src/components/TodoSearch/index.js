@@ -20,7 +20,6 @@ function TodoSearch({ searchValue, setSearchValue }) {
 
   const onSearchInputChange = (e) => {
     setSearchValue(e.target.value);
-    console.log(searchValue)
   };
 
   return (

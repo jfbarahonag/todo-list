@@ -9,14 +9,17 @@ import { CreateTodoButton } from "../components/CreateTodoButton";
 import "./App.css";
 
 function AppUI(
-    {
-        searchValue,
-        setSearchValue,
-        totalTODOs,
-        completedTODOs,
-        filterTODOs,
-        toggleCompleteTODO,
-        deleteTODO
+  {
+    searchValue,
+    setSearchValue,
+    totalTODOs,
+    completedTODOs,
+    filterTODOs,
+    toggleCompleteTODO,
+    deleteTODO,
+    loading,
+    error,
+    
     }
 ) {
     return (
@@ -30,6 +33,9 @@ function AppUI(
           completed={completedTODOs.length}
         />
         <TodoList>
+          {loading && <p>Loading content</p>}
+          {error && <p>ERROR loading content</p>}
+          {(!loading && !filterTODOs.length && !error) && <p>Add your first Task</p>}
           {filterTODOs.map((todo) => (
             <TodoItem
               key={todo.text}
