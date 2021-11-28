@@ -6,16 +6,31 @@ const KEY = {
   V1: 'TODOS_V1'
 }
 
-function App() {
+/**
+ * custom hook for localStorage
+*/
+function useLocalStorage(itemName, initialValue) {
+  const localStorageItem = localStorage.getItem(itemName);
+  
+  let parsedItems = localStorageItem
+  ? JSON.parse(localStorageItem)
+  : localStorage.setItem(itemName, JSON.stringify(initialValue));
+  
+  const [items, setItems] = useState(parsedItems || initialValue);
+  
+  const saveItems = (newItems) => {
+    setItems(newItems);
+    
+    const stringifiedItems = JSON.stringify(newItems);
+    localStorage.setItem(itemName, stringifiedItems);
+  };
 
-  const localStorageTODOs = localStorage.getItem(KEY.V1)
-  
-  let parsedTODOs = localStorageTODOs
-    ? JSON.parse(localStorageTODOs)
-    : localStorage.setItem(KEY.V1, JSON.stringify([]));
-  
+  return [items, saveItems]
+}
+
+function App() {
+  const [TODOs, saveTODOs] = useLocalStorage(KEY.V1, []);
   const [searchValue, setSearchValue] = useState('')
-  const [TODOs, setTODOs] = useState(parsedTODOs || [])
 
   const completedTODOs = TODOs.filter(todo => !!todo.completed)
   const totalTODOs = TODOs
@@ -38,13 +53,6 @@ function App() {
     const newTODOs = [...TODOs]
     newTODOs.splice(TODOIdx, 1)
     saveTODOs(newTODOs)
-  }
-
-  const saveTODOs = (newTODOs) => {
-    setTODOs(newTODOs)
-    
-    const stringifiedTODOs = JSON.stringify(newTODOs)
-    localStorage.setItem(KEY.V1, stringifiedTODOs)
   }
 
   return (
