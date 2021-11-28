@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
-//components
-import { AppUI } from './AppUI';
-//styles
 
-const defaultTODOs = [
-  { text: 'Study React', completed: false },
-  { text: 'Study Vue', completed: true },
-  { text: 'Panic Button [FW]', completed: true },
-  { text: 'Vipe\'s web app', completed: false },
-  { text: 'Procrastinate', completed: true },
-];
+import { AppUI } from './AppUI';
+
+const KEY = {
+  V1: 'TODOS_V1'
+}
 
 function App() {
+
+  const localStorageTODOs = localStorage.getItem(KEY.V1)
+  
+  let parsedTODOs = localStorageTODOs
+    ? JSON.parse(localStorageTODOs)
+    : localStorage.setItem(KEY.V1, JSON.stringify([]));
+  
   const [searchValue, setSearchValue] = useState('')
-  //TODO: change to an empty array
-  const [TODOs, setTODOs] = useState(defaultTODOs)
+  const [TODOs, setTODOs] = useState(parsedTODOs || [])
 
   const completedTODOs = TODOs.filter(todo => !!todo.completed)
   const totalTODOs = TODOs
@@ -28,7 +29,7 @@ function App() {
 
     const newTODOs = [...TODOs]
     newTODOs[TODOIdx].completed = !newTODOs[TODOIdx].completed;
-    setTODOs(newTODOs)
+    saveTODOs(newTODOs)
   }
 
   const deleteTODO = text => {
@@ -36,7 +37,14 @@ function App() {
 
     const newTODOs = [...TODOs]
     newTODOs.splice(TODOIdx, 1)
+    saveTODOs(newTODOs)
+  }
+
+  const saveTODOs = (newTODOs) => {
     setTODOs(newTODOs)
+    
+    const stringifiedTODOs = JSON.stringify(newTODOs)
+    localStorage.setItem(KEY.V1, stringifiedTODOs)
   }
 
   return (
