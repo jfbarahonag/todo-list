@@ -1,5 +1,6 @@
 import React from "react";
 
+import { TODOContext } from "../TodoContext";
 import { TodoCounter } from "../components/TodoCounter";
 import { TodoSearch } from "../components/TodoSearch";
 import { TodoList } from "../components/TodoList";
@@ -24,32 +25,40 @@ function AppUI(
 ) {
     return (
       <div className="app-wrapper">
-        <TodoSearch
-            searchValue={searchValue}
-            setSearchValue={setSearchValue}
-        />
-        <TodoCounter
-          total={totalTODOs.length}
-          completed={completedTODOs.length}
-        />
-        <TodoList>
-          {loading && <p>Loading content</p>}
-          {error && <p>ERROR loading content</p>}
-          {(!loading && !filterTODOs.length && !error) && <p>Add your first Task</p>}
-          {filterTODOs.map((todo) => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onToggleComplete={() => {
-                toggleCompleteTODO(todo.text);
-              }}
-              onDelete={() => {
-                deleteTODO(todo.text);
-              }}
-            />
-          ))}
-        </TodoList>
+        <TodoSearch />
+        <TodoCounter />
+
+        <TODOContext.Consumer>
+          {({
+            error,
+            loading,
+            filterTODOs,
+            toggleCompleteTODO,
+            deleteTODO,
+          }) => (
+            <TodoList>
+              {loading && <p>Loading content</p>}
+              {error && <p>ERROR loading content</p>}
+              {!loading && !filterTODOs.length && !error && (
+                <p>Add your first Task</p>
+              )}
+              {filterTODOs.map((todo) => (
+                <TodoItem
+                  key={todo.text}
+                  text={todo.text}
+                  completed={todo.completed}
+                  onToggleComplete={() => {
+                    toggleCompleteTODO(todo.text);
+                  }}
+                  onDelete={() => {
+                    deleteTODO(todo.text);
+                  }}
+                />
+              ))}
+            </TodoList>
+          )}
+        </TODOContext.Consumer>
+
         <CreateTodoButton />
       </div>
     );
