@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { TODOContext } from "../../TodoContext";
 
+import './TodoForm.css'
+
 function TodoForm() {
   
   const [newTODOValue, setNewTODOValue] = useState('');
@@ -17,7 +19,7 @@ function TodoForm() {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    if (newTODOValue != '') {
+    if (newTODOValue !== '') {
       addTODO(newTODOValue)
       console.log(`Add ok`)
       setNewTODOValue('')
@@ -30,22 +32,27 @@ function TodoForm() {
   }
 
   return (
-    <form action="" onSubmit={onSubmit}>
-      <label htmlFor="">...</label>
+    <form className="todo-form" onSubmit={onSubmit}>
+      <label className="todo-form__label">Add a New Task</label>
       <textarea
-        name=""
-        id=""
-        cols="30"
-        rows="10"
+        className="todo-form__text"
         placeholder="Make false & false = true"
         onChange={onTextAreaChange}
         value={newTODOValue}
       />
-      <div className="buttons-container">
-        <button type="button" onClick={onCancel}>
+      <div className="todo-form__buttons">
+        <button
+          className="button todo-form__buttons-cancel"
+          type="button"
+          onClick={onCancel}
+        >
           Cancel
         </button>
-        <button type="submit">Add Task</button>
+        <button
+          className="button todo-form__buttons-add"
+          type="submit">
+          Add Task
+        </button>
       </div>
     </form>
   );
