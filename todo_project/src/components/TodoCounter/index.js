@@ -6,12 +6,13 @@ import './TodoCounter.css'
 
 function TodoCounter() {
     
-    const {totalTODOs, completedTODOs} = useContext(TODOContext)
+    const {totalTODOs, completedTODOs, loading} = useContext(TODOContext)
 
     return (
         <span className='todo-counter'>
-            {(!!completedTODOs.length && !!totalTODOs.length) && `You have completed ${completedTODOs.length} of ${totalTODOs.length} tasks`}
-            {(!totalTODOs.length) && `There are no tasks registered`}
+            {(completedTODOs.length !== 0 || totalTODOs.length !== 0) && `You have completed ${completedTODOs.length} of ${totalTODOs.length} tasks`}
+            {(totalTODOs.length === 0 && !loading) && `There are no tasks registered`}
+            {(!!loading) && `Tasks are being loaded`}
         </span>
     )
 }
