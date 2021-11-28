@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 //components
-import { TodoCounter } from './components/TodoCounter'
-import { TodoSearch } from './components/TodoSearch'
-import { TodoList } from './components/TodoList'
-import { TodoItem } from './components/TodoItem'
-import { CreateTodoButton } from "./components/CreateTodoButton";
+import { AppUI } from './AppUI';
 //styles
-import './App.css';
 
 const defaultTODOs = [
   { text: 'Study React', completed: false },
@@ -45,31 +40,15 @@ function App() {
   }
 
   return (
-    <div className="app-wrapper">
-
-      <TodoSearch
-        searchValue = {searchValue}
-        setSearchValue = {setSearchValue}
-      />
-      <TodoCounter
-        total={totalTODOs.length}
-        completed={completedTODOs.length}
-      />
-      <TodoList>
-        {
-          filterTODOs.map( todo => (
-            <TodoItem
-              key={todo.text}
-              text={todo.text}
-              completed={todo.completed}
-              onToggleComplete={() => { toggleCompleteTODO(todo.text) }}
-              onDelete={() => { deleteTODO(todo.text) }}
-            />
-          ))
-        }
-      </TodoList>
-      <CreateTodoButton />
-    </div>
+    <AppUI
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      totalTODOs={totalTODOs}
+      completedTODOs={completedTODOs}
+      filterTODOs={filterTODOs}
+      toggleCompleteTODO={toggleCompleteTODO}
+      deleteTODO={deleteTODO}
+    />
   );
 }
 
