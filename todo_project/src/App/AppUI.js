@@ -8,6 +8,7 @@ import { TodoItem } from "../components/TodoItem";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import { TodoForm } from "../components/TodoForm";
 import { Modal } from "../components/Modal";
+import Loader from "../components/Loader";
 
 import "./App.css";
 
@@ -29,7 +30,7 @@ function AppUI() {
       <TodoCounter />
 
       <TodoList>
-        {loading && <p>Loading content</p>}
+        {loading && <Loader />}
         {error && <p>ERROR loading content</p>}
         {!loading && !filterTODOs.length && !totalTODOs.length && !error && (
           <p>Add your first Task</p>
