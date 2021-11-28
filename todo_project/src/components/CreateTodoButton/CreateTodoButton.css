@@ -34,6 +34,8 @@
     cursor: pointer;
     background-color: rgb(85, 201, 255);
     color: aliceblue;
+    position: absolute;
+    z-index: 2;
 }
 
 @media (max-width: 600px) {

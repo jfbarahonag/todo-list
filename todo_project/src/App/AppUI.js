@@ -57,7 +57,10 @@ function AppUI() {
         </Modal>
       )}
 
-      <CreateTodoButton />
+      <CreateTodoButton
+        setOpenModal={setOpenModal}
+        openModal={openModal}
+      />
     </div>
   );
 }
