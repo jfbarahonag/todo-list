@@ -2,9 +2,6 @@ import React from "react";
 import "./CreateTodoButton.css";
 
 function CreateTodoButton({ setOpenModal }) {
-  const handleChange = (e) => {
-    console.log(e.target.value);
-  };
 
   const onToggleAddTodo = () => {
     setOpenModal(prevState => !prevState)
@@ -12,14 +9,6 @@ function CreateTodoButton({ setOpenModal }) {
 
   return (
     <section className="create-task">
-      <h2 className="create-task__title">Add a new Task</h2>
-      <input
-        className="create-task__input"
-        type="text"
-        placeholder="Task name here..."
-        onChange={handleChange}
-      />
-
       <button className="create-task__button">
         <svg
           onClick={onToggleAddTodo}

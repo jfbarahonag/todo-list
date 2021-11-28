@@ -4,22 +4,6 @@
     grid-template-columns: repeat(8, 1fr);
 }
 
-.create-task__title {
-    grid-column-start: 1;
-    grid-column-end: 9;
-    text-align: center;
-}
-
-.create-task__input {
-    grid-column-start: 3;
-    grid-column-end  : 7;
-    padding: 1rem;
-    border-radius: 10px;
-    border: 1px solid black;
-    outline: none;
-    margin-bottom: 20px;
-}
-
 .create-task__button {
     grid-row-start: 4;
     grid-column-start: 4;
@@ -42,18 +26,6 @@
     .create-task {
         display              : grid;
         grid-template-rows   : 1fr 1fr 1fr;
-    }
-
-    .create-task__title {
-    grid-column-start: 2;
-    grid-column-end  : 8;
-    text-align       : center;
-    }
-
-    .create-task__input {
-        grid-column-start: 2;
-        grid-column-end  : 8;
-        margin-bottom: 10px;
     }
 
     .create-task__button {
