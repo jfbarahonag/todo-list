@@ -1,13 +1,10 @@
 .create-task {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: repeat(8, 1fr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .create-task__button {
-    grid-row-start: 4;
-    grid-column-start: 4;
-    grid-column-end  : 6;
     background: none;
     border: none;
 }
@@ -19,25 +16,8 @@
     background-color: rgb(85, 201, 255);
     color: aliceblue;
     position: absolute;
-    z-index: 2;
-}
-
-@media (max-width: 600px) {
-    .create-task {
-        display              : grid;
-        grid-template-rows   : 1fr 1fr 1fr;
-    }
-
-    .create-task__button {
-        grid-column-start: 2;
-        grid-column-end  : 8;
-        border-radius: 10px;
-    }
-
-    .create-task__button>svg {
-        position: fixed;
-        right   : 0;
-        bottom  : 0;
-        margin: 1rem;
-    }
+    z-index: 1;
+    right  : 0;
+    bottom : 0;
+    margin : 2rem;
 }
