@@ -10,12 +10,13 @@ const KEY = {
 
 function TODOProvider(props) {
   const {
-    items: TODOs,
+    items: tempTODOs,
     saveItems: saveTODOs,
     loading,
     error,
   } = useLocalStorage(KEY.V1, []);
-
+  
+  let TODOs = [] || tempTODOs
   const [searchValue, setSearchValue] = useState("");
   const [openModal, setOpenModal] = useState(false);
 
